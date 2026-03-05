@@ -1,20 +1,14 @@
-:root {
-    --primary: #7C3AED;
-    --background: #18181B;
-    --text: #ffffff;
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
 }
-
-body {
-    background-color: var(--background);
-    color: var(--text);
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+.icon-block .material-icons {
+	font-size: inherit;
 }
-
-button {
-    background-color: var(--primary);
-    color: white;
-}
-
-
