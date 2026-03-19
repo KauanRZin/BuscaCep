@@ -17,56 +17,26 @@
         <li><a href="#">Navbar Link</a></li>
       </ul>
 
+  
       <ul id="nav-mobile" class="sidenav">
         <li><a href="#">Navbar Link</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <h1 class="header center orange-text">Cadastro</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Digite suas informações informações</h5>
-      </div>
-      <div class="row">
-    <form class="col s12 ">
-      <div class="row">
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">First Name</label>
-        </div>
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_suffix" type="text" class="validate">
-          <label for="icon_suffix">Last Name</label>
-        </div>
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">phone</i>
-          <input id="icon_telephone" type="tel" class="validate">
-          <label for="icon_telephone">Telephone</label>
-        </div>
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">phone</i>
-          <input id="icon_cellphone" type="tel" class="validate">
-          <label for="icon_cellphone">Cell Phone</label>
-        </div>
-        <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">email</i>
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">lock</i>
-              <input id="password" type="password" class="validate">
-              <label for="password">Password</label>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3 m4"><a class="active" href="#Cep">CEP</a></li>
+        <li class="tab col s3 m4"><a href="#Rua">Rua</a></li>
+        <li class="tab col s3 m4"><a href="#Log">Log</a></li>
+      </ul>
+    </div>
+    <!-- CONTEUDO DO CEP -->
+    <div id="Cep" class="col s12"><h1 class="header center orange-text">Busca Cep</h1>
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">location_on</i>
-          <input onmouseout="preencher()" id="CEP" type="text" class="validate">
+          <input  id="CEP" type="text" class="validate">
           <label for="CEP">CEP</label>
         </div>
         <div class="input-field col s12 m6">
@@ -97,12 +67,41 @@
         <div class="input-field col s12 m12">
           <a class="waves-effect waves-light btn-small" onclick="preencher()">Buscar</a>
           <a class="waves-effect waves-light btn-small" onclick="apagar()">Limpar</a>
-      </div>
-    </form>
-  </div>
+        </div>
+    </div></div>
 
-  
-  <!--  Scripts-->
+    <!-- CONTEUDO DA RUA -->
+    <div id="Rua" class="col s12"><h1 class="header center orange-text">Busca Cep</h1>  
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">location_on</i>
+        <input id="Uf" type="text" class="validate">
+        <label for="Uf">UF</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">location_city</i>
+        <input id="Uf-CIDADE" type="text" class="validate">
+        <label for="Uf-CIDADE">Cidade</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">home</i>
+        <input id="Uf-LUGADOURO" type="text" class="validate">
+        <label for="Uf-LUGADOURO">Logradouro</label>
+      </div>
+      <div class="input-field col s12 m12">
+        <a class="waves-effect waves-light btn-small" onclick="MostrarRua()">Buscar</a>
+        <a class="waves-effect waves-light btn-small" onclick="apagar()">Limpar</a>
+      </div> 
+      
+      <!--LISTA DE RUAS-->
+      <ul id = "lista-ruas" class="collection">
+        
+      </ul>
+
+    </div></div>
+    <div id="Log" class="col s12">Test 4</div>
+      
+
+  <!-- Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>

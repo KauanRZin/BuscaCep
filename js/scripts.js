@@ -25,6 +25,7 @@ function preencher() {
     console.log("CEP FORA", cep);
   }
 }
+
 function apagar() {
   document.getElementById("CEP").value = "";
   document.getElementById("ESTADO").value = "";
@@ -32,4 +33,45 @@ function apagar() {
   document.getElementById("BAIRRO").value = "";
   document.getElementById("LUGADOURO").value = "";
   document.getElementById("DDD").value = "";
+}
+//Buscar Por cep
+function MostrarRua() {
+  uf = $("#Uf").val();
+  cidade = $("#Uf-CIDADE").val();
+  logradouro = $("#Uf-LUGADOURO").val();
+  url = `https://viacep.com.br/ws/${uf}/${cidade}/${logradouro}/json/`;
+  if (uf == "" || cidade == "" || logradouro == "") {
+    alert("Coloque o estado, cidade e logradouro");
+  } else {
+  fetch(url)
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+
+        let arrayRuas = "";
+
+        for(let i of res){
+
+          dadosRua = ""
+          arrayRuas += `<li class="collection-item avatar">
+          <span class="title">${i.cep}</span>
+          <p>
+            ${i.logradouro} <br>
+            ${i.bairro} <br>
+            ${i.localidade}<br>
+            ${i.estado}<br>
+            
+          </p>
+          <a href="#!" class="secondary-content"></a>
+        </li>`
+        }
+        document.getElementById("lista-ruas").innerHTML = arrayRuas;
+
+        M.updateTextFields();
+      });
+    }
+
+  console.log(uf, cidade, logradouro);
 }
