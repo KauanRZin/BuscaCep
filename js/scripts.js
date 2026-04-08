@@ -21,6 +21,7 @@ function preencher() {
         document.getElementById("LUGADOURO").value = cep.logradouro;
         document.getElementById("DDD").value = cep.ddd;
         M.updateTextFields();
+        confetti();
       });
     console.log("CEP FORA", cep);
   }
@@ -35,9 +36,45 @@ function apagar() {
   document.getElementById("DDD").value = "";
 }
 //Buscar Por cep
+
+function buscarUfs(){
+  url = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'
+  listaUfs = '<option value="" disabled selected>Coloque o estado</option>'
+
+  fetch(url)
+  .then((res) => {
+    return res.json();
+  })
+  .then((res)=> {
+    for(let uf of res){
+      listaUfs += `<option value="${uf.sigla}">${uf.sigla}</option>`
+    }
+    document.getElementById("lista-estados").innerHTML = listaUfs
+    console.log(res)
+  })
+}
+
+
+function buscarCidades(uf){
+  url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`
+  listaCidades = '<option value="" disabled selected>Coloque o estado</option>'
+
+  fetch(url)
+  .then((res) => {
+    return res.json();
+  })
+  .then((res)=> {
+    for(let cidade of res){
+      listaCidades += `<option value="${cidade.nome}">${cidade.nome}</option>`
+    }
+    document.getElementById("lista-cidades").innerHTML = listaCidades
+    console.log(res)
+  })
+}
+//colocar para pegar as coisas 
 function MostrarRua() {
-  uf = $("#Uf").val();
-  cidade = $("#Uf-CIDADE").val();
+  uf = $("#lista-estados").val();
+  cidade = $("#lista-cidades").val();
   logradouro = $("#Uf-LUGADOURO").val();
   url = `https://viacep.com.br/ws/${uf}/${cidade}/${logradouro}/json/`;
   if (uf == "" || cidade == "" || logradouro == "") {
@@ -70,8 +107,12 @@ function MostrarRua() {
         document.getElementById("lista-ruas").innerHTML = arrayRuas;
 
         M.updateTextFields();
+        confetti();
       });
     }
 
   console.log(uf, cidade, logradouro);
 }
+
+
+

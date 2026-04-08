@@ -1,111 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Cadastro de Usuário</title>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Cadastro de Usuário</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">BCP</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
+    <!-- CSS  -->
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    
+  </head>
+  <body>
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">BCP</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
 
-  
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-  <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3 m4"><a class="active" href="#Cep">CEP</a></li>
-        <li class="tab col s3 m4"><a href="#Rua">Rua</a></li>
-        <li class="tab col s3 m4"><a href="#Log">Log</a></li>
-      </ul>
-    </div>
-    <!-- CONTEUDO DO CEP -->
-    <div id="Cep" class="col s12"><h1 class="header center orange-text">Busca Cep</h1>
+    
+        <ul id="nav-mobile" class="sidenav">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s3 m4"><a class="active" href="#Cep">CEP</a></li>
+          <li onclick="buscarUfs()" class="tab col s3 m4"><a href="#Rua">Rua</a></li>
+          <li class="tab col s3 m4"><a href="#Log">Log</a></li>
+        </ul>
+      </div>
+      <!-- CONTEUDO DO CEP -->
+      <div id="Cep" class="col s12"><h1 class="header center orange-text">Busca Cep</h1>
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">location_on</i>
+            <input  id="CEP" type="text" class="validate">
+            <label for="CEP">CEP</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">location_on</i>
+            <input id="ESTADO" type="text" class="validate">
+            <label for="ESTADO">Estado</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">location_city</i>
+            <input id="CIDADE" type="text" class="validate">
+            <label for="CIDADE">Cidade</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">home</i>
+            <input id="LUGADOURO" type="text" class="validate">
+            <label for="LUGADOURO">Logradouro</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">location_on</i>
+            <input id="BAIRRO" type="text" class="validate">
+            <label for="BAIRRO">Bairro</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">phone</i>
+            <input id="DDD" type="text" class="validate">
+            <label for="DDD">DDD</label>
+          </div>
+          <div class="input-field col s12 m12">
+            <a class="waves-effect waves-light btn-small" onclick="preencher()">Buscar</a>
+            <a class="waves-effect waves-light btn-small" onclick="apagar()">Limpar</a>
+          </div>
+      </div></div>
+
+      <!-- CONTEUDO DA RUA -->
+      <div id="Rua" class="col s12"><h1 class="header center orange-text">Busca Cep</h1>  
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">location_on</i>
-          <input  id="CEP" type="text" class="validate">
-          <label for="CEP">CEP</label>
+            <select onchange="buscarCidades(this.value)" id="lista-estados" class="browser-default Selects">
+              <option value="" disabled selected>Coloque o estado</option>
+          
+            </select>
         </div>
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">location_on</i>
-          <input id="ESTADO" type="text" class="validate">
-          <label for="ESTADO">Estado</label>
+
+
+
+        <div class="input-fied col s12 m6">
+          <i class="material-icons prefix iconsSelects">location_city</i>
+            <select id="lista-cidades" class="browser-default Selects">
+              <option value="" disabled selected>Coloque a cidade</option>
+            </select>
         </div>
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">location_city</i>
-          <input id="CIDADE" type="text" class="validate">
-          <label for="CIDADE">Cidade</label>
-        </div>
+
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">home</i>
-          <input id="LUGADOURO" type="text" class="validate">
-          <label for="LUGADOURO">Logradouro</label>
-        </div>
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">location_on</i>
-          <input id="BAIRRO" type="text" class="validate">
-          <label for="BAIRRO">Bairro</label>
-        </div>
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">phone</i>
-          <input id="DDD" type="text" class="validate">
-          <label for="DDD">DDD</label>
+          <i class="material-icons prefix">home</i>
+          <input id="Uf-LUGADOURO" type="text" class="validate">
+          <label for="Uf-LUGADOURO">Logradouro</label>
         </div>
         <div class="input-field col s12 m12">
-          <a class="waves-effect waves-light btn-small" onclick="preencher()">Buscar</a>
+          <a class="waves-effect waves-light btn-small" onclick="MostrarRua()">Buscar</a>
           <a class="waves-effect waves-light btn-small" onclick="apagar()">Limpar</a>
-        </div>
-    </div></div>
-
-    <!-- CONTEUDO DA RUA -->
-    <div id="Rua" class="col s12"><h1 class="header center orange-text">Busca Cep</h1>  
-      <div class="input-field col s12 m6">
-        <i class="material-icons prefix">location_on</i>
-        <input id="Uf" type="text" class="validate">
-        <label for="Uf">UF</label>
-      </div>
-      <div class="input-field col s12 m6">
-        <i class="material-icons prefix">location_city</i>
-        <input id="Uf-CIDADE" type="text" class="validate">
-        <label for="Uf-CIDADE">Cidade</label>
-      </div>
-      <div class="input-field col s12 m6">
-        <i class="material-icons prefix">home</i>
-        <input id="Uf-LUGADOURO" type="text" class="validate">
-        <label for="Uf-LUGADOURO">Logradouro</label>
-      </div>
-      <div class="input-field col s12 m12">
-        <a class="waves-effect waves-light btn-small" onclick="MostrarRua()">Buscar</a>
-        <a class="waves-effect waves-light btn-small" onclick="apagar()">Limpar</a>
-      </div> 
-      
-      <!--LISTA DE RUAS-->
-      <ul id = "lista-ruas" class="collection">
+        </div> 
         
-      </ul>
+        <!--LISTA DE RUAS-->
+        <ul id = "lista-ruas" class="collection">
+          
+        </ul>
 
-    </div></div>
-    <div id="Log" class="col s12">Test 4</div>
-      
+      </div></div>
+      <div id="Log" class="col s12">Test 4</div>
+        
 
-  <!-- Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/scripts.js"></script>
+    <!-- Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.1.0/dist/confetti.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"
+    integrity="sha512-h9644v03pHqrIHThkvXhB2PJ8zf5E9IyVnrSfZg8Yj8k4RsO4zldcQc4Bi9iVLUCCsqNY0b4WXVV4UB+wbWENA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/scripts.js"></script>
 
-  </body>
-</html>
+    </body>
+  </html>
