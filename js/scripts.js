@@ -20,6 +20,7 @@ function preencher() {
         document.getElementById("BAIRRO").value = cep.bairro;
         document.getElementById("LUGADOURO").value = cep.logradouro;
         document.getElementById("DDD").value = cep.ddd;
+        Log("BuscarPeloCep",cep,cep.logradouro)
         M.updateTextFields();
         confetti();
       });
@@ -34,6 +35,14 @@ function apagar() {
   document.getElementById("BAIRRO").value = "";
   document.getElementById("LUGADOURO").value = "";
   document.getElementById("DDD").value = "";
+}
+
+function apagarRua() {
+  document.getElementById("lista-estados").value = "";
+  document.getElementById("lista-cidades").value = "";
+  document.getElementById("Uf-LUGADOURO").value = "";
+
+  document.getElementById("lista-ruas").innerHTML = ""
 }
 //Buscar Por cep
 
@@ -105,7 +114,7 @@ function MostrarRua() {
         </li>`
         }
         document.getElementById("lista-ruas").innerHTML = arrayRuas;
-
+        Log("BuscarRuas","lista",arrayRuas)
         M.updateTextFields();
         confetti();
       });
@@ -114,5 +123,15 @@ function MostrarRua() {
   console.log(uf, cidade, logradouro);
 }
 
+function Log(type,cep,rua){
+  document.querySelector("tbody").innerHTML += 
+  `
+  <tr>
+    <td>${type}</td>
+    <td>${cep}</td>
+    <td>${rua}</td>
+  </tr>
+  `
+}
 
 
