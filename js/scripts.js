@@ -3,9 +3,9 @@ function mostrar() {
 }
 
 function preencher() {
-  cep = document.getElementById("CEP").value;
-  url = `https://viacep.com.br/ws/${cep}/json/`;
-  if (cep == "") {
+  Cep = document.getElementById("CEP").value;
+  url = `https://viacep.com.br/ws/${Cep}/json/`;
+  if (Cep == "") {
     alert("Coloque o cep");
   } else {
     //buscando cep usando fetch
@@ -20,7 +20,7 @@ function preencher() {
         document.getElementById("BAIRRO").value = cep.bairro;
         document.getElementById("LUGADOURO").value = cep.logradouro;
         document.getElementById("DDD").value = cep.ddd;
-        Log("BuscarPeloCep",cep,cep.logradouro)
+        Log("BuscarPeloCep",Cep,cep.logradouro)
         M.updateTextFields();
         confetti();
       });
