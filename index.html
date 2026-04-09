@@ -81,8 +81,6 @@
             </select>
         </div>
 
-
-
         <div class="input-fied col s12 m6">
           <i class="material-icons prefix iconsSelects">location_city</i>
             <select id="lista-cidades" class="browser-default Selects">
@@ -108,16 +106,19 @@
 
       </div></div>
       <div id="Log" class="col s12">
+        <div class="input-field col s12 m12">
+          <a class="waves-effect waves-light btn-small" onclick="apagarLog()">Limpar</a>
+        </div> 
       <table>
         <thead>
           <tr>
               <th>Funcão</th>
-              <th>CEP</th>
+              <th>CEP/Tipo</th>
               <th>Lista/Ruas</th>
           </tr>
         </thead>
 
-        <tbody>
+        <tbody id="BLog">
           
         </tbody>
       </table>

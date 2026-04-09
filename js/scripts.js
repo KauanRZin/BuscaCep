@@ -15,6 +15,11 @@ function preencher() {
       })
       .then((cep) => {
         console.log(cep);
+        if(cep.estado == undefined){
+          alert("Coloque um cep válido")
+          Log("BuscarPeloCep","Cep inexistente","Nao tem")
+        }
+        else{
         document.getElementById("ESTADO").value = cep.estado;
         document.getElementById("CIDADE").value = cep.localidade;
         document.getElementById("BAIRRO").value = cep.bairro;
@@ -23,6 +28,7 @@ function preencher() {
         Log("BuscarPeloCep",Cep,cep.logradouro)
         M.updateTextFields();
         confetti();
+        }
       });
     console.log("CEP FORA", cep);
   }
@@ -44,7 +50,6 @@ function apagarRua() {
 
   document.getElementById("lista-ruas").innerHTML = ""
 }
-//Buscar Por cep
 
 function buscarUfs(){
   url = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'
@@ -66,7 +71,7 @@ function buscarUfs(){
 
 function buscarCidades(uf){
   url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`
-  listaCidades = '<option value="" disabled selected>Coloque o estado</option>'
+  listaCidades = '<option value="" disabled selected>Coloque a cidade</option>'
 
   fetch(url)
   .then((res) => {
@@ -94,9 +99,9 @@ function MostrarRua() {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
-
+        console.log(res);        
         let arrayRuas = "";
+        let arrayLog = "";
 
         for(let i of res){
 
@@ -112,11 +117,19 @@ function MostrarRua() {
           </p>
           <a href="#!" class="secondary-content"></a>
         </li>`
+          arrayLog += `CEP: ${i.cep} ; RUA: ${i.logradouro} <br>`
         }
         document.getElementById("lista-ruas").innerHTML = arrayRuas;
-        Log("BuscarRuas","lista",arrayRuas)
+        
+        if(arrayLog.length == 0){
+          Log("BuscarRuas", "Sem resposta", "Vázia")
+        }
+        else{
+          Log("BuscarRuas","lista",arrayLog)
+          confetti();
+        }
         M.updateTextFields();
-        confetti();
+        
       });
     }
 
@@ -132,6 +145,11 @@ function Log(type,cep,rua){
     <td>${rua}</td>
   </tr>
   `
+}
+
+
+function apagarLog(){
+  document.getElementById("BLog").innerHTML = "";
 }
 
 
