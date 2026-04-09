@@ -122,6 +122,7 @@ function MostrarRua() {
         document.getElementById("lista-ruas").innerHTML = arrayRuas;
         
         if(arrayLog.length == 0){
+          alert("Nao exite(m)   rua(s)    com este nome ")
           Log("BuscarRuas", "Sem resposta", "Vázia")
         }
         else{
